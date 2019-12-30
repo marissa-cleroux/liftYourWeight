@@ -1,3 +1,9 @@
+import {
+  DELETE_EXERCISE,
+  ADD_EXERCISE,
+  UPDATE_EXERCISE
+} from "../actions/exerciseActions";
+
 const initExercises = {
   exercises: [
     { id: "1", title: "Squat", currentWeight: "45" },
@@ -9,6 +15,15 @@ const initExercises = {
 };
 
 const exerciseReducer = (state = initExercises, action) => {
+  if (action.type === DELETE_EXERCISE) {
+    let newExercises = state.exercises.filter(ex => {
+      return ex.id !== action.exercise;
+    });
+    return {
+      ...state,
+      exercises: newExercises
+    };
+  }
   return state;
 };
 

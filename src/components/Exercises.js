@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { deleteExercise } from "../actions/exerciseActions";
 
 class Exercises extends Component {
+  handleDelete = id => {
+    this.props.deleteExercise(id);
+  };
+
   render() {
     const { exercises } = this.props;
     const exerciseList = exercises.length ? (
@@ -21,10 +26,18 @@ class Exercises extends Component {
               </div>
 
               <div className="card-action">
-                <Link className="indigo-text" to={"/exercises/delete/" + ex.id}>
+                <button
+                  className="btn-flat white indigo-text"
+                  onClick={() => {
+                    this.handleDelete(ex.id);
+                  }}
+                >
                   Delete
-                </Link>
-                <Link className="indigo-text" to={"/exercises/update/" + ex.id}>
+                </button>
+                <Link
+                  className="btn-flat white indigo-text"
+                  to={"/exercises/update/" + ex.id}
+                >
                   Update
                 </Link>
               </div>
@@ -51,4 +64,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Exercises);
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteExercise: id => {
+      console.log("TRYING TO DELETE: ", id);
+      dispatch(deleteExercise(id));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Exercises);
