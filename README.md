@@ -1,4 +1,4 @@
-# Lift Your Weights
+# Lift Your Weight
 
 A web app that allows you track your weight lifting progress for the exercises you choose.
 
