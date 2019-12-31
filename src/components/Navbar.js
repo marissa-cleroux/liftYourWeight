@@ -8,11 +8,8 @@ const Navbar = () => {
         <Link className="brand-logo left" to="/">
           Lift Your Weight
         </Link>
-        <a
-          href="#"
-          data-target="mobile-nav"
-          className="nobtn sidenav-trigger right"
-        >
+
+        <a href="#" data-target="mobile-nav" className="sidenav-trigger right">
           <i className="material-icons">menu</i>
         </a>
 

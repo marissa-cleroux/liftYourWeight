@@ -52,6 +52,12 @@ class Exercises extends Component {
     return (
       <div className="exercises container">
         <h4 className="center">Exercises</h4>
+        <Link
+          to="/exercises/add"
+          className="add-fab btn-floating btn-large waves-effect waves-light text-teal text-darken-3"
+        >
+          <i className="material-icons">add</i>
+        </Link>
         <div className="grid">{exerciseList}</div>
       </div>
     );
@@ -67,7 +73,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     deleteExercise: id => {
-      console.log("TRYING TO DELETE: ", id);
       dispatch(deleteExercise(id));
     }
   };
