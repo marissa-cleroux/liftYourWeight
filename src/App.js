@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Exercises from "./components/Exercises";
-import AddExercise from "./components/AddExercise";
+import ExerciseForm from "./components/ExerciseForm";
 import "./App.css";
 
 function App() {
@@ -13,7 +13,11 @@ function App() {
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/exercises" component={Exercises} />
-          <Route path="/exercises/add" component={AddExercise} />
+          <Route path="/exercises/add" component={ExerciseForm} />
+          <Route
+            path="/exercises/update/:exercise_id"
+            component={ExerciseForm}
+          />
         </Switch>
       </div>
     </BrowserRouter>

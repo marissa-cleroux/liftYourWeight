@@ -17,27 +17,37 @@ const initExercises = {
 };
 
 const exerciseReducer = (state = initExercises, action) => {
+  let exercises;
   switch (action.type) {
     case DELETE_EXERCISE:
-      let newExercises = state.exercises.filter(ex => {
+      exercises = state.exercises.filter(ex => {
         return ex.id !== action.exercise;
       });
       return {
         ...state,
-        exercises: newExercises
+        exercises
       };
 
     case ADD_EXERCISE:
       action.exercise.id = nextId;
       nextId++;
-      const exercises = [...state.exercises, action.exercise];
+      exercises = [...state.exercises, action.exercise];
       return {
         ...state,
         exercises
       };
 
     case UPDATE_EXERCISE:
+      exercises = state.exercises.map(ex =>
+        ex.id === action.exercise.id ? action.exercise : ex
+      );
+      return {
+        ...state,
+        exercises
+      };
       break;
+
+    default:
   }
   return state;
 };
