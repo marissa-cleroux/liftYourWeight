@@ -81,15 +81,10 @@ class ExerciseForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   let id = ownProps.match.params.exercise_id;
-  console.log("PROPS: ", ownProps);
-  console.log("ID: ", id);
   isUpdate = id !== undefined;
   let exercise = id
     ? state.exercises.find(ex => ex.id === id)
     : { id: "", title: "", currentWeight: "" };
-
-  console.log("EXERCISE: ", exercise);
-  console.log("EXERCISES: ", state.exercises);
   return {
     exercise
   };

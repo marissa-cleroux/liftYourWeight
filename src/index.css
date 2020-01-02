@@ -39,6 +39,14 @@ code {
   right: 10px;
 }
 
+.sidenav li > a {
+  border-bottom: solid 2px rgba(0, 128, 128, 0.2);
+}
+
+.sidenav-close.active {
+  background-color: rgba(0, 128, 128, 0.1);
+}
+
 @media only screen and (min-width: 768px) {
   .grid {
     display: grid;
