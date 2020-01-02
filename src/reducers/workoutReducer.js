@@ -7,9 +7,17 @@ import {
 let nextId = 3;
 
 const initWorkouts = {
-  exercises: [
-    { id: "1", title: "Lowerbody", exercises: ["1", "2", "5"] },
-    { id: "2", title: "Upperbody", exercises: ["2", "4", "6"] }
+  workouts: [
+    {
+      id: "1",
+      title: "Lower Body",
+      exercises: [{ id: "1" }, { id: "2" }, { id: "5" }]
+    },
+    {
+      id: "2",
+      title: "Upper Body",
+      exercises: [{ id: "3" }, { id: "4" }, { id: "6" }]
+    }
   ]
 };
 

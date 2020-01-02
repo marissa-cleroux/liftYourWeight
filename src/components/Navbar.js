@@ -19,6 +19,7 @@ const Navbar = () => {
         <ul className="right hide-on-med-and-down">
           <li>
             <NavLink to="/exercises">Exercises</NavLink>
+            <NavLink to="/workouts">Workouts</NavLink>
           </li>
         </ul>
       </nav>
@@ -26,6 +27,9 @@ const Navbar = () => {
         <li>
           <NavLink to="/exercises" className="sidenav-close">
             Exercises
+          </NavLink>
+          <NavLink to="/workouts" className="sidenav-close">
+            Workouts
           </NavLink>
         </li>
       </ul>
