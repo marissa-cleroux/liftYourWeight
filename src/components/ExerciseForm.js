@@ -85,7 +85,7 @@ const mapStateToProps = (state, ownProps) => {
   console.log("ID: ", id);
   isUpdate = id !== undefined;
   let exercise = id
-    ? state.exercises.find(ex => ex.id == id)
+    ? state.exercises.find(ex => ex.id === id)
     : { id: "", title: "", currentWeight: "" };
 
   console.log("EXERCISE: ", exercise);

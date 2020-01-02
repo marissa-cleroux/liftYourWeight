@@ -4,7 +4,7 @@ import {
   UPDATE_WORKOUT
 } from "../actions/workoutActions";
 
-let nextId = 6;
+let nextId = 3;
 
 const initWorkouts = {
   exercises: [

@@ -9,7 +9,7 @@ class Exercises extends Component {
   };
 
   render() {
-    const { exercises } = this.props;
+    const { exercises } = this.props.exercises;
     const exerciseList = exercises.length ? (
       exercises.map(ex => {
         return (

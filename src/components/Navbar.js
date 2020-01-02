@@ -9,9 +9,12 @@ const Navbar = () => {
           Lift Your Weight
         </Link>
 
-        <a href="#" data-target="mobile-nav" className="sidenav-trigger right">
+        <button
+          data-target="mobile-nav"
+          className="sidenav-trigger right btn-flat white-text teal darken-4"
+        >
           <i className="material-icons">menu</i>
-        </a>
+        </button>
 
         <ul className="right hide-on-med-and-down">
           <li>

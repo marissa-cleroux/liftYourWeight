@@ -46,7 +46,6 @@ const exerciseReducer = (state = initExercises, action) => {
         ...state,
         exercises
       };
-      break;
 
     default:
   }
