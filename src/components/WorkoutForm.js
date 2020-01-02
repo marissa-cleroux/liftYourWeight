@@ -44,10 +44,11 @@ class WorkoutForm extends Component {
       return;
     }
 
+    const selectedExercises = this.state.exercises.filter(ex => ex.checked);
     const workout = {
       id: this.state.id,
       title: this.state.title,
-      exercises: this.state.exercises.map(ex => {
+      exercises: selectedExercises.map(ex => {
         let e = {
           id: ex.id.substring(3)
         };

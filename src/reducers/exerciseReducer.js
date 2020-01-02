@@ -30,7 +30,7 @@ const exerciseReducer = (state = initExercises, action) => {
       };
 
     case ADD_EXERCISE:
-      action.exercise.id = nextId;
+      action.exercise.id = nextId.toString();
       nextId++;
       exercises = [...state.exercises, action.exercise];
       return {

@@ -34,7 +34,7 @@ const workoutReducer = (state = initWorkouts, action) => {
       };
 
     case ADD_WORKOUT:
-      action.workout.id = nextId;
+      action.workout.id = nextId.toString();
       nextId++;
       workouts = [...state.workouts, action.workout];
       return {
