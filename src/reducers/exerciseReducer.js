@@ -4,7 +4,7 @@ import {
   UPDATE_EXERCISE
 } from "../actions/exerciseActions";
 
-let nextId = 6;
+let nextId = 7;
 
 const initExercises = {
   exercises: [
@@ -12,7 +12,8 @@ const initExercises = {
     { id: "2", title: "Deadlift", currentWeight: "65" },
     { id: "3", title: "Bench Press", currentWeight: "45" },
     { id: "4", title: "Overhead Press", currentWeight: "45" },
-    { id: "5", title: "Lunge", currentWeight: "45" }
+    { id: "5", title: "Lunge", currentWeight: "45" },
+    { id: "6", title: "Bentover Row", currentWeight: "45" }
   ]
 };
 
