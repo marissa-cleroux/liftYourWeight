@@ -17,11 +17,60 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.lbl {
+  font-weight: bold;
+}
+
+.lbl:after {
+  content: ": ";
+}
+
+.mb {
+  margin-bottom: 20px;
+}
+
+.mt {
+  margin-top: 20px;
+}
+
+.add-fab {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.sidenav li > a {
+  border-bottom: solid 2px rgba(0, 128, 128, 0.2);
+}
+
+.sidenav-close.active {
+  background-color: rgba(0, 128, 128, 0.1);
+}
+
+.add-workout .grid {
+  text-align: left;
+}
+
+@media only screen and (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media only screen and (min-width: 992px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  nav .brand-logo {
+    position: static;
+    padding-left: 0.5rem;
+  }
+
+  button.sidenav-trigger {
+    display: none;
   }
 }

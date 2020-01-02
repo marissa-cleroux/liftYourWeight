@@ -83,7 +83,7 @@ const mapStateToProps = (state, ownProps) => {
   let id = ownProps.match.params.exercise_id;
   isUpdate = id !== undefined;
   let exercise = id
-    ? state.exercises.find(ex => ex.id === id)
+    ? state.exercises.exercises.find(ex => ex.id === id)
     : { id: "", title: "", currentWeight: "" };
   return {
     exercise

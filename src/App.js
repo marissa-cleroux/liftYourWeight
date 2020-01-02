@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Exercises from "./components/Exercises";
 import ExerciseForm from "./components/ExerciseForm";
 import Workouts from "./components/Workouts";
+import WorkoutForm from "./components/WorkoutForm";
+import "materialize-css/dist/css/materialize.min.css";
 import "./App.css";
 
 function App() {
@@ -14,12 +16,15 @@ function App() {
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/exercises" component={Exercises} />
-          <Route exact path="/workouts" component={Workouts} />
           <Route path="/exercises/add" component={ExerciseForm} />
           <Route
             path="/exercises/update/:exercise_id"
             component={ExerciseForm}
           />
+
+          <Route exact path="/workouts" component={Workouts} />
+          <Route path="/workouts/add" component={WorkoutForm} />
+          <Route path="/workouts/update/:workout_id" component={WorkoutForm} />
         </Switch>
       </div>
     </BrowserRouter>
