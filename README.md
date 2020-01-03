@@ -6,8 +6,8 @@ A web app that allows you track your weight lifting progress for the exercises y
 
 ### Phase 1: Create base of web app based on initial learning
 
-- Create this project based on what I learned in the tutorial to cement some ideas and figure out my gaps
-- Will not make use of any sort of permanent storage thus far
+- Create this project based on what I learn about React from the tutorial listed below and the documentation
+- Not making use of any permanent storage or react hooks thus far
 - Resources: [React & Redux Introduction](https://www.youtube.com/watch?v=OxIDLw0M-m0&list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG) course by The Net Ninja, React Documentation, Redux Documentation, Stack Overflow
 
 ### Phase 2: Refactor project to use react hooks where applicable
