@@ -19,3 +19,5 @@ A web app that allows you track your weight lifting progress for the exercises y
 - At this stage I have not decided what I want to use for the backend
 
 ### Phase 4: Authentication and Authorization
+
+### Phase 5: Convert to server side rendered application?
