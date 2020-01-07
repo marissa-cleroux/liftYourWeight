@@ -11,12 +11,6 @@ class Workouts extends Component {
   render() {
     const { workouts, exercises } = this.props;
 
-    console.log("WORKOUTS: ", workouts);
-    console.log("EXERCISES: ", exercises);
-    console.log(
-      "FIND: ",
-      exercises.find(e => e.id === "3")
-    );
     const workoutList = workouts.length ? (
       workouts.map(workout => {
         return (
@@ -50,6 +44,13 @@ class Workouts extends Component {
                   to={"/workouts/update/" + workout.id}
                 >
                   Update
+                </Link>
+
+                <Link
+                  className="btn-flat white indigo-text"
+                  to={"/doworkout/" + workout.id}
+                >
+                  Do Workout
                 </Link>
               </div>
             </div>

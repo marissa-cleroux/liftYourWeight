@@ -25,7 +25,7 @@ class WorkoutForm extends Component {
   handleCheck = e => {
     const { exercises } = this.state;
 
-    for (var i in exercises) {
+    for (let i in exercises) {
       if (exercises[i].id === e.target.id) {
         exercises[i].checked = e.target.checked;
       }
@@ -83,7 +83,7 @@ class WorkoutForm extends Component {
               />
             </div>
           </div>
-          <div className="row">
+          <div className="checkboxes row">
             <div className="grid col s10 push-s1 push-l2 l8">
               {this.state.exercises.map(ex => {
                 return (

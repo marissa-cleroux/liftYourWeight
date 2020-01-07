@@ -24,3 +24,12 @@ export function deleteExercise(exercise) {
     exercise
   };
 }
+
+export const INCREMENT_WEIGHT = "INCREMENT_WEIGHT";
+
+export function incrementWeight(exercises) {
+  return {
+    type: INCREMENT_WEIGHT,
+    exercises
+  };
+}

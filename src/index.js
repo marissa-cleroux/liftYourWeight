@@ -3,17 +3,20 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import workoutReducer from "./reducers/workoutReducer";
 import exerciseReducer from "./reducers/exerciseReducer";
+import workoutHistoryReducer from "./reducers/workoutHistoryReducer";
 
 const rootReducer = combineReducers({
   exercises: exerciseReducer,
-  workouts: workoutReducer
+  workouts: workoutReducer,
+  workoutHistory: workoutHistoryReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,7 +1,8 @@
 import {
   DELETE_EXERCISE,
   ADD_EXERCISE,
-  UPDATE_EXERCISE
+  UPDATE_EXERCISE,
+  INCREMENT_WEIGHT
 } from "../actions/exerciseActions";
 
 let nextId = 7;
@@ -42,6 +43,40 @@ const exerciseReducer = (state = initExercises, action) => {
       exercises = state.exercises.map(ex =>
         ex.id === action.exercise.id ? action.exercise : ex
       );
+      return {
+        ...state,
+        exercises
+      };
+
+    case INCREMENT_WEIGHT:
+      const completedExercises = action.exercises.map(ex => {
+        if (ex.completed) {
+          let exercise = {
+            id: ex.id,
+            title: ex.title,
+            currentWeight: (parseFloat(ex.currentWeight) + 5).toString()
+          };
+          return exercise;
+        } else {
+          let exercise = {
+            id: ex.id,
+            title: ex.title,
+            currentWeight: ex.currentWeight
+          };
+          return exercise;
+        }
+      });
+
+      const completedExerciseIds = completedExercises.map(ex => ex.id);
+
+      exercises = state.exercises.map(ex => {
+        if (completedExerciseIds.includes(ex.id)) {
+          return completedExercises.find(_ex => ex.id === _ex.id);
+        } else {
+          return ex;
+        }
+      });
+
       return {
         ...state,
         exercises

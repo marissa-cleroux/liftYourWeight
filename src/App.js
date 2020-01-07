@@ -5,8 +5,11 @@ import Exercises from "./components/Exercises";
 import ExerciseForm from "./components/ExerciseForm";
 import Workouts from "./components/Workouts";
 import WorkoutForm from "./components/WorkoutForm";
+import DoWorkout from "./components/DoWorkout";
 import "materialize-css/dist/css/materialize.min.css";
 import "./App.css";
+
+//TODO: Make sure everything is sorted alphabetically
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
             path="/exercises/update/:exercise_id"
             component={ExerciseForm}
           />
+
+          <Route exact path="/doworkout/:workout_id" component={DoWorkout} />
 
           <Route exact path="/workouts" component={Workouts} />
           <Route path="/workouts/add" component={WorkoutForm} />
