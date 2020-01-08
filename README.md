@@ -21,3 +21,5 @@ A web app that allows you track your weight lifting progress for the exercises y
 ### Phase 4: Authentication and Authorization
 
 ### Phase 5: Convert to server side rendered application?
+
+### Phase 6: Iterate
