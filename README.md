@@ -14,6 +14,7 @@ A web app that allows you track your weight lifting progress for the exercises y
 
 - Refactor project based on what I learn about react hooks
 - Use local storage for storing exercise, workouts, and history
+- Resources: [React Context & Hooks Tutorial](https://www.youtube.com/watch?v=6RhOzQciVwI&list=PL4cUxeGkcC9hNokByJilPg5g9m2APUePI&index=1) course by The Net Ninja, React Documentation, Stack Overflow
 
 ### Phase 3: Implement service worker
 
