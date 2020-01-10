@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ExerciseContext } from "../context/ExerciseContext";
+import { ExerciseContext } from "../contexts/ExerciseContext";
 import ExerciseDetails from "./ExerciseDetails";
 
 const Exercises = () => {

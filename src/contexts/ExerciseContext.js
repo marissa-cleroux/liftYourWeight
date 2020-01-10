@@ -11,8 +11,6 @@ const ExerciseContextProvider = props => {
   });
 
   useEffect(() => {
-    console.log(exercises);
-
     localStorage.setItem("exercises", JSON.stringify(exercises));
   }, [exercises]);
 

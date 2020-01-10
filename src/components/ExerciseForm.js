@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { addExercise, updateExercise } from "../actions/exerciseActions";
-import { ExerciseContext } from "../context/ExerciseContext";
+import { ExerciseContext } from "../contexts/ExerciseContext";
 
 const ExerciseForm = props => {
   const { exercises, dispatch } = useContext(ExerciseContext);

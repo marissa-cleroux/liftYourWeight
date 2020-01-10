@@ -4,55 +4,27 @@ import {
   UPDATE_WORKOUT
 } from "../actions/workoutActions";
 
-let nextId = 3;
+import uuid from "uuid/v1";
 
-const initWorkouts = {
-  workouts: [
-    {
-      id: "1",
-      title: "Lower Body",
-      exercises: [{ id: "1" }, { id: "2" }, { id: "5" }]
-    },
-    {
-      id: "2",
-      title: "Upper Body",
-      exercises: [{ id: "3" }, { id: "4" }, { id: "6" }]
-    }
-  ]
-};
-
-const workoutReducer = (state = initWorkouts, action) => {
-  let workouts;
+const workoutReducer = (state, action) => {
   switch (action.type) {
     case DELETE_WORKOUT:
-      workouts = state.workouts.filter(w => {
-        return w.id !== action.workout;
+      return state.filter(workout => {
+        return workout.id !== action.workout;
       });
-      return {
-        ...state,
-        workouts
-      };
 
     case ADD_WORKOUT:
-      action.workout.id = nextId.toString();
-      nextId++;
-      workouts = [...state.workouts, action.workout];
-      return {
-        ...state,
-        workouts
-      };
+      action.workout.id = uuid();
+      return [...state, action.workout];
 
     case UPDATE_WORKOUT:
-      workouts = state.workouts.map(w =>
-        w.id === action.workout.id ? action.workout : w
+      return state.map(workout =>
+        workout.id === action.workout.id ? action.workout : workout
       );
-      return {
-        ...state,
-        workouts
-      };
+
     default:
+      return state;
   }
-  return state;
 };
 
 export default workoutReducer;

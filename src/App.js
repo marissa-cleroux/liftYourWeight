@@ -8,7 +8,8 @@ import WorkoutForm from "./components/WorkoutForm";
 import DoWorkout from "./components/DoWorkout";
 import "materialize-css/dist/css/materialize.min.css";
 import "./App.css";
-import ExerciseContextProvider from "./context/ExerciseContext";
+import ExerciseContextProvider from "./contexts/ExerciseContext";
+import WorkoutContextProvider from "./contexts/WorkoutContext";
 
 //TODO: Make sure everything is sorted alphabetically
 
@@ -17,25 +18,30 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <ExerciseContextProvider>
-          <Navbar />
-          <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
-            <Route exact path="/exercises" component={Exercises} />
-            <Route path="/exercises/add" component={ExerciseForm} />
-            <Route
-              path="/exercises/update/:exercise_id"
-              component={ExerciseForm}
-            />
+          <WorkoutContextProvider>
+            <Navbar />
+            <Switch>
+              <Route exact path="/exercises" component={Exercises} />
+              <Route path="/exercises/add" component={ExerciseForm} />
+              <Route
+                path="/exercises/update/:exercise_id"
+                component={ExerciseForm}
+              />
 
-            <Route exact path="/doworkout/:workout_id" component={DoWorkout} />
+              <Route
+                exact
+                path="/doworkout/:workout_id"
+                component={DoWorkout}
+              />
 
-            <Route exact path="/workouts" component={Workouts} />
-            <Route path="/workouts/add" component={WorkoutForm} />
-            <Route
-              path="/workouts/update/:workout_id"
-              component={WorkoutForm}
-            />
-          </Switch>
+              <Route exact path="/workouts" component={Workouts} />
+              <Route path="/workouts/add" component={WorkoutForm} />
+              <Route
+                path="/workouts/update/:workout_id"
+                component={WorkoutForm}
+              />
+            </Switch>
+          </WorkoutContextProvider>
         </ExerciseContextProvider>
       </div>
     </BrowserRouter>

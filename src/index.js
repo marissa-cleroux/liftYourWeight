@@ -6,11 +6,9 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
-import workoutReducer from "./reducers/workoutReducer";
 import workoutHistoryReducer from "./reducers/workoutHistoryReducer";
 
 const rootReducer = combineReducers({
-  workouts: workoutReducer,
   workoutHistory: workoutHistoryReducer
 });
 
