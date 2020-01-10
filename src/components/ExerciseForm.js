@@ -1,105 +1,64 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState, useContext } from "react";
 import { addExercise, updateExercise } from "../actions/exerciseActions";
+import { ExerciseContext } from "../context/ExerciseContext";
 
-let isUpdate = false;
-
-class ExerciseForm extends Component {
-  state = {
-    id: "",
-    title: "",
-    currentWeight: ""
-  };
-
-  componentDidMount = () => {
-    this.setState({
-      id: this.props.exercise.id,
-      title: this.props.exercise.title,
-      currentWeight: this.props.exercise.currentWeight
-    });
-  };
-
-  handleChange = e => {
-    this.setState({ [e.target.id]: e.target.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    if (!this.state.title && !this.state.currentWeight) {
-      return;
-    }
-    this.props.submit(this.state);
-    this.setState({
-      id: "",
-      title: "",
-      currentWeight: ""
-    });
-    this.props.history.push("/exercises");
-  };
-
-  render() {
-    return (
-      <div className="add-exercise container mt">
-        <form action="" onSubmit={this.handleSubmit}>
-          <div className="row">
-            <div className="input-field col s10 push-s1 push-l2 l8">
-              <label htmlFor="title" className={isUpdate ? "active" : ""}>
-                Exercise{" "}
-              </label>
-              <input
-                type="text"
-                id="title"
-                onChange={this.handleChange}
-                value={this.state.title}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s10 push-s1 push-l2 l8">
-              <label
-                htmlFor="currentWeight"
-                className={isUpdate ? "active" : ""}
-              >
-                Starting Weight{" "}
-              </label>
-              <input
-                type="text"
-                id="currentWeight"
-                onChange={this.handleChange}
-                value={this.state.currentWeight}
-              />
-            </div>
-          </div>
-          <div>
-            <button className="btn">Submit</button>
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state, ownProps) => {
-  let id = ownProps.match.params.exercise_id;
-  isUpdate = id !== undefined;
-  let exercise = id
-    ? state.exercises.exercises.find(ex => ex.id === id)
+const ExerciseForm = props => {
+  const { exercises, dispatch } = useContext(ExerciseContext);
+  const id = props.match.params.exercise_id;
+  const exercise = id
+    ? exercises.find(ex => ex.id === id)
     : { id: "", title: "", currentWeight: "" };
-  return {
-    exercise
+
+  const [title, setTitle] = useState(exercise.title);
+  const [currentWeight, setCurrentWeight] = useState(exercise.currentWeight);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(
+      id
+        ? updateExercise({ title, currentWeight, id: exercise.id })
+        : addExercise({ title, currentWeight })
+    );
+    setTitle("");
+    setCurrentWeight("");
+    props.history.push("/exercises");
   };
+
+  return (
+    <div className="add-exercise container mt">
+      <form action="" onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="input-field col s10 push-s1 push-l2 l8">
+            <label htmlFor="title" className={id ? "active" : ""}>
+              Exercise{" "}
+            </label>
+            <input
+              type="text"
+              id="title"
+              onChange={e => setTitle(e.target.value)}
+              value={title}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s10 push-s1 push-l2 l8">
+            <label htmlFor="currentWeight" className={id ? "active" : ""}>
+              Starting Weight
+            </label>
+            <input
+              type="text"
+              id="currentWeight"
+              onChange={e => setCurrentWeight(e.target.value)}
+              value={currentWeight}
+            />
+          </div>
+        </div>
+        <div>
+          <button className="btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    submit: isUpdate
-      ? exercise => {
-          dispatch(updateExercise(exercise));
-        }
-      : exercise => {
-          dispatch(addExercise(exercise));
-        }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciseForm);
+export default ExerciseForm;

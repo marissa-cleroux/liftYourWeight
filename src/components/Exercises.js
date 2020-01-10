@@ -1,81 +1,37 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { deleteExercise } from "../actions/exerciseActions";
+import { ExerciseContext } from "../context/ExerciseContext";
+import ExerciseDetails from "./ExerciseDetails";
 
-class Exercises extends Component {
-  handleDelete = id => {
-    this.props.deleteExercise(id);
-  };
-
-  render() {
-    const { exercises } = this.props;
-    const exerciseList = exercises.length ? (
-      exercises.map(ex => {
-        return (
-          <div className="exercise card" key={ex.id}>
-            <div className="card-content">
-              <Link to={"/exercises/details/" + ex.id}>
-                <span className="card-title teal-text">{ex.title}</span>
-              </Link>
-              <div className="mb">
-                <p>
-                  <span className="lbl">Weight</span>
-                  {ex.currentWeight}
-                </p>
-              </div>
-
-              <div className="card-action">
-                <button
-                  className="btn-flat white indigo-text"
-                  onClick={() => {
-                    this.handleDelete(ex.id);
-                  }}
-                >
-                  Delete
-                </button>
-                <Link
-                  className="btn-flat white indigo-text"
-                  to={"/exercises/update/" + ex.id}
-                >
-                  Update
-                </Link>
-              </div>
-            </div>
-          </div>
-        );
-      })
-    ) : (
-      <div className="center"></div>
-    );
-
-    return (
-      <div className="exercises container">
-        <h4 className="center">Exercises</h4>
-        <Link
-          to="/exercises/add"
-          className="add-fab btn-floating btn-large waves-effect waves-light text-teal text-darken-3"
-        >
-          <i className="material-icons">add</i>
-        </Link>
-        <div className="grid">{exerciseList}</div>
+const Exercises = () => {
+  const { exercises } = useContext(ExerciseContext);
+  console.log("EXERCISES: ", exercises);
+  return exercises.length ? (
+    <div className="exercises container">
+      <h4 className="center">Exercises</h4>
+      <Link
+        to="/exercises/add"
+        className="add-fab btn-floating btn-large waves-effect waves-light text-teal text-darken-3"
+      >
+        <i className="material-icons">add</i>
+      </Link>
+      <div className="grid">
+        {exercises.map(exercise => {
+          return <ExerciseDetails exercise={exercise} key={exercise.id} />;
+        })}
       </div>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    exercises: state.exercises.exercises
-  };
+    </div>
+  ) : (
+    <div>
+      <div className="empty">No exercises to perform</div>
+      <Link
+        to="/exercises/add"
+        className="add-fab btn-floating btn-large waves-effect waves-light text-teal text-darken-3"
+      >
+        <i className="material-icons">add</i>
+      </Link>
+    </div>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteExercise: id => {
-      dispatch(deleteExercise(id));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Exercises);
+export default Exercises;

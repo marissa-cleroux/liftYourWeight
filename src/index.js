@@ -7,11 +7,9 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import workoutReducer from "./reducers/workoutReducer";
-import exerciseReducer from "./reducers/exerciseReducer";
 import workoutHistoryReducer from "./reducers/workoutHistoryReducer";
 
 const rootReducer = combineReducers({
-  exercises: exerciseReducer,
   workouts: workoutReducer,
   workoutHistory: workoutHistoryReducer
 });

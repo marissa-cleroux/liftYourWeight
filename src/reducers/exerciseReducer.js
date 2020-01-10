@@ -5,48 +5,31 @@ import {
   INCREMENT_WEIGHT
 } from "../actions/exerciseActions";
 
-let nextId = 7;
+import uuid from "uuid/v1";
 
-const initExercises = {
-  exercises: [
-    { id: "1", title: "Squat", currentWeight: "45" },
-    { id: "2", title: "Deadlift", currentWeight: "65" },
-    { id: "3", title: "Bench Press", currentWeight: "45" },
-    { id: "4", title: "Overhead Press", currentWeight: "45" },
-    { id: "5", title: "Lunge", currentWeight: "45" },
-    { id: "6", title: "Bentover Row", currentWeight: "45" }
-  ]
-};
-
-const exerciseReducer = (state = initExercises, action) => {
-  let exercises;
+export const exerciseReducer = (state, action) => {
+  console.log("EXERCISE STATE: ", state);
+  console.log("EXERCISE ACTION: ", action);
   switch (action.type) {
     case DELETE_EXERCISE:
-      exercises = state.exercises.filter(ex => {
+      return state.filter(ex => {
         return ex.id !== action.exercise;
       });
-      return {
-        ...state,
-        exercises
-      };
 
     case ADD_EXERCISE:
-      action.exercise.id = nextId.toString();
-      nextId++;
-      exercises = [...state.exercises, action.exercise];
-      return {
+      return [
         ...state,
-        exercises
-      };
+        {
+          id: uuid(),
+          title: action.exercise.title,
+          currentWeight: action.exercise.currentWeight
+        }
+      ];
 
     case UPDATE_EXERCISE:
-      exercises = state.exercises.map(ex =>
+      return state.map(ex =>
         ex.id === action.exercise.id ? action.exercise : ex
       );
-      return {
-        ...state,
-        exercises
-      };
 
     case INCREMENT_WEIGHT:
       const completedExercises = action.exercises.map(ex => {
@@ -69,7 +52,7 @@ const exerciseReducer = (state = initExercises, action) => {
 
       const completedExerciseIds = completedExercises.map(ex => ex.id);
 
-      exercises = state.exercises.map(ex => {
+      const exercises = state.map(ex => {
         if (completedExerciseIds.includes(ex.id)) {
           return completedExercises.find(_ex => ex.id === _ex.id);
         } else {
@@ -77,10 +60,7 @@ const exerciseReducer = (state = initExercises, action) => {
         }
       });
 
-      return {
-        ...state,
-        exercises
-      };
+      return [...exercises];
 
     default:
   }
