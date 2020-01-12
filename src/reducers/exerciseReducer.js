@@ -8,8 +8,6 @@ import {
 import uuid from "uuid/v1";
 
 export const exerciseReducer = (state, action) => {
-  console.log("EXERCISE STATE: ", state);
-  console.log("EXERCISE ACTION: ", action);
   switch (action.type) {
     case DELETE_EXERCISE:
       return state.filter(ex => {
@@ -33,21 +31,13 @@ export const exerciseReducer = (state, action) => {
 
     case INCREMENT_WEIGHT:
       const completedExercises = action.exercises.map(ex => {
-        if (ex.completed) {
-          let exercise = {
-            id: ex.id,
-            title: ex.title,
-            currentWeight: (parseFloat(ex.currentWeight) + 5).toString()
-          };
-          return exercise;
-        } else {
-          let exercise = {
-            id: ex.id,
-            title: ex.title,
-            currentWeight: ex.currentWeight
-          };
-          return exercise;
-        }
+        return {
+          id: ex.id,
+          title: ex.title,
+          currentWeight: ex.completed
+            ? (parseFloat(ex.currentWeight) + 5).toString()
+            : ex.currentWeight
+        };
       });
 
       const completedExerciseIds = completedExercises.map(ex => ex.id);
@@ -63,8 +53,8 @@ export const exerciseReducer = (state, action) => {
       return [...exercises];
 
     default:
+      return state;
   }
-  return state;
 };
 
 export default exerciseReducer;
