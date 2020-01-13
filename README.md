@@ -2,7 +2,7 @@
 
 A web app that allows you track your weight lifting progress for the exercises you choose.
 
-### A project created to help me learn react
+A project designed to help me learn react and other fun technologies.
 
 ## Phase 1: Create base of web app based on initial learning
 
