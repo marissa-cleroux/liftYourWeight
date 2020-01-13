@@ -26,6 +26,8 @@ A project designed to help me learn react and other fun technologies.
 
 - Implement service worker so that app is progressive
 
-## Phase 6: Convert to server side rendered application
+## Phase 6: Create tests
 
-## Phase 7: Iterate
+## Phase 7: Convert to server side rendered application
+
+## Phase 8: Iterate
