@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const WorkoutDetails = ({ workout }) => {
   const { exercises } = useContext(ExerciseContext);
-  const { dispatch } = useContext(WorkoutContext);
+  const { dispatch } = useContext(WorkoutContext); 
 
   return (
     <div className="workout card" key={workout.id}>
